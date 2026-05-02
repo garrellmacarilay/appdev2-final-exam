@@ -15,8 +15,17 @@ import {
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { Id } from "../convex/_generated/dataModel";
+import { useRoute, RouteProp } from "@react-navigation/native";
 
-const TodoScreen = ({ userId }: {userId: Id<"users">}) => {
+type RootStackParamList = {
+    Login: undefined;
+    Signup: undefined;
+    Todo: { userId: Id<"users"> };
+};
+
+const TodoScreen = () => {
+    const route = useRoute<RouteProp<RootStackParamList, "Todo">>();
+    const { userId } = route.params;
     const [task, setTask] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 

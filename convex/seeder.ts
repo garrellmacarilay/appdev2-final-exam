@@ -28,6 +28,7 @@ export const seed = mutation({
     if (!userId) {
       const hashedPassword = bcrypt.hashSync("seed1234", 10);
       userId = await ctx.db.insert("users", {
+        fullName: "Seed User",
         username: "seed@example.com",
         password: hashedPassword,
       });

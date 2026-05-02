@@ -47,7 +47,7 @@ export const register = mutation({
         const hashedPassword = bcrypt.hashSync(args.password, 10);
 
         const userId = await ctx.db.insert("users", {
-            fullname: args.fullname,
+            fullName: args.fullname,
             username: args.username,
             password: hashedPassword
         });
